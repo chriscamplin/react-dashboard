@@ -19,7 +19,7 @@ export default class Login extends Component<{}, ILoginState> {
     const { name, value } = event.target;
     console.log("handleChange", name, value);
 
-    if (!name || value) return;
+    if (!name || !value) return;
     this.setState(
       (prevState) => ({
         ...prevState,
