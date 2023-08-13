@@ -1,13 +1,137 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body,
+html {
+    width: 100%;
+    height: 100%
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    font-family: Montserrat, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+hr.light {
+    border-color: #fff
+}
+
+a {
+    color: #00b9ff;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s
+}
+
+a:hover {
+    color: #00b9fe
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Montserrat, sans-serif
+}
+
+.bg-primary {
+    background-color: #00b9ff !important
+}
+
+.bg-dark {
+    background-color: #212529 !important
+}
+
+.text-faded {
+    color: rgba(255, 255, 255, .7)
+}
+
+section {
+    padding: 5.5rem 0
+}
+
+svg {
+  overflow: visible;
+}
+
+.section-heading {
+    margin-top: 0
+}
+
+::-moz-selection {
+    color: #fff;
+    background: #212529;
+    text-shadow: none
+}
+
+::selection {
+    color: #fff;
+    background: #212529;
+    text-shadow: none
+}
+
+img::selection {
+    color: #fff;
+    background: 0 0
+}
+
+img::-moz-selection {
+    color: #fff;
+    background: 0 0
+}
+
+svg#how-we-do,
+svg#what-we-do,
+svg#who-we-are {
+    width: 150px
+}
+
+
+.img-responsive {
+    width: 100%;
+    height: auto
+}
+
+[class^=icon-svg] {
+    position: relative;
+    top: 13px
+}
+
+
+.flex-layout {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+    }
+}
+
+#contact .container {
+  max-width: 1000px;
+}
+
+#contact .container table {
+  max-height: 200px;
+}
+
+
+.chart-container {
+  height: 400px;
+}
+
+rect {
+  transition: all .25s linear;
 }

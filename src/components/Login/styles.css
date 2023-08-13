@@ -1,0 +1,50 @@
+section#contact {
+    background-color: #efefef
+}
+
+section#contact .wrapper {
+    position: relative
+}
+
+section#contact form {
+    background-color: #fff;
+    padding: 20px;
+    -webkit-transition: all .5s linear;
+    -moz-transition: all .5s linear;
+    -o-transition: all .5s linear;
+    transition: all .5s linear;
+    -webkit-box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, .05);
+    box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, .05);
+    border: 1px solid #eee;
+    max-width: 600px;
+    min-height: 200px;
+}
+
+
+section#contact form .btn {
+    font-size: inherit;
+    width: 100%;
+    margin-top: auto;
+}
+
+section#contact h2 {
+    margin-bottom: 48px;
+    font-size: 48px;
+    font-weight: 500
+}
+
+section#contact p {
+    max-width: 420px;
+    font-size: 24px
+}
+
+#contact form .row {
+    gap: 10px;
+}
+
+.form-label {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
