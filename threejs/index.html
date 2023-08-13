@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contilio Three.js Code Challenge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script>
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+
+        let renderer = new THREE.WebGLRenderer();
+        renderer.setSize(width, height);
+        document.body.appendChild(renderer.domElement);
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 10000);
+        camera.position.z = 75;
+        scene.add(camera);
+        let light = new THREE.PointLight(0xffffff);
+        light.position.set(-100, 200, 100);
+        scene.add(light);
+        let group = new THREE.Group();
+        const count = 30 * 30 * 30;
+        let boxIndex = 0;
+        const matrix = new THREE.Matrix4();
+
+        let geometry = new THREE.BoxGeometry(0.75, 0.75, 0.75);
+        let material = new THREE.MeshNormalMaterial();
+        let mesh = new THREE.InstancedMesh(geometry, material, count);
+
+        for (let x = 0; x < 30; x++) {
+            for (let y = 0; y < 30; y++) {
+                for (let z = 0; z < 30; z++) {
+                    const position = new THREE.Vector3();
+                    position.x = x - 15;
+                    position.y =  y - 15;
+                    position.z = z - 15;
+                    matrix.setPosition(position);
+                    mesh.setMatrixAt(boxIndex, matrix);
+                    boxIndex++;
+                }
+            }
+        }
+        group.add(mesh);
+        scene.add(group);
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+        function animate() {
+            renderer.render(scene, camera);
+            group.rotation.x += 0.002;
+            group.rotation.y += 0.004;
+            requestAnimationFrame(animate);
+        }
+        resize();
+        animate();
+        window.addEventListener('resize', resize);
+    </script>
+</body>
+
+</html>
