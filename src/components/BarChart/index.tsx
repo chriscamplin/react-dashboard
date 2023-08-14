@@ -13,7 +13,6 @@ const getValue = (d: any) => Number(d.value);
 type Props = {
   width: number;
   height: number;
-  events?: boolean;
   data: Item;
 };
 
@@ -27,11 +26,10 @@ const margins = {
  * @param {Object} props - The props for the BarChart component.
  * @param {number} props.width - The width of the SVG container.
  * @param {number} props.height - The height of the SVG container.
- * @param {boolean} [props.events=false] - Flag to enable/disable event handling.
  * @param {Item} props.data - The data object containing attributes for the bar chart.
  */
 
-export function BarChart({ width, height, events = false, data }: Props) {
+export function BarChart({ width, height, data }: Props) {
   // bounds
   const xMax = width - margins.left;
   const yMax = height - verticalMargin;
@@ -63,23 +61,19 @@ export function BarChart({ width, height, events = false, data }: Props) {
       <rect width={width} height={height} fill="url(#teal)" rx={4} />
       <Group top={verticalMargin / 2} left={margins.left}>
         {data.attributes.map((d) => {
-          const letter = getName(d);
+          const name = getName(d);
           const barWidth = xScale.bandwidth();
           const barHeight = yMax - (yScale(getValue(d)) ?? 0);
-          const barX = xScale(letter);
+          const barX = xScale(name);
           const barY = yMax - barHeight;
           return (
             <Bar
-              key={`bar-${letter}`}
+              key={`bar-${name}`}
               x={barX}
               y={barY}
               width={barWidth}
               height={barHeight}
               fill="rgba(23, 233, 217, .5)"
-              onClick={() => {
-                if (events)
-                  alert(`clicked: ${JSON.stringify(Object.values(d))}`);
-              }}
             />
           );
         })}
